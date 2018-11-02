@@ -18,7 +18,7 @@ package ${package};
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("greeting")
-public class GreetingApplication extends Application {
+@ApplicationPath("application")
+public class JaxRsApplication extends Application {
 
 }

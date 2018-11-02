@@ -23,7 +23,7 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 
 @Health
 @ApplicationScoped
-public class GreetingHealth implements HealthCheck {
+public class ServiceHealth implements HealthCheck {
 
     public boolean isHealthy() {
 
@@ -35,7 +35,8 @@ public class GreetingHealth implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-        boolean up = isHealthy();
-        return HealthCheckResponse.named("GreetingService").state(up).build();
+        return HealthCheckResponse.named("GreetingService")
+                                  .state(isHealthy())
+                                  .build();
     }
 }

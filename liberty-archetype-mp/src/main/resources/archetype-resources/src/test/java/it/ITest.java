@@ -24,13 +24,14 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
-public class GreetingIT {
+public class ITest {
     private static String URL;
 
     @BeforeClass
     public static void init() {
         String port = System.getProperty("liberty.test.port");
-        URL = "http://localhost:" + port + "/${artifactId}/greeting/hello/JDoe";
+        URL = "http://localhost:" + port + "/health";
+        System.out.println(">>>> " + URL);
     }
 
     @Test
@@ -52,10 +53,10 @@ public class GreetingIT {
             assertEquals("Response must be 200 OK", 200, response.getStatus());
 
             if (response == null) {
-                assertNotNull("GreetingService response must not be NULL", response);
+                assertNotNull("Health response must not be NULL", response);
             } else {
                 String respStr = response.readEntity(String.class);
-                assertTrue("Response must contain \"Hello\"", respStr.contains("Hello"));
+                assertTrue("Response must contain \"Up\"", respStr.contains("Up"));
             }
 
         } finally {
